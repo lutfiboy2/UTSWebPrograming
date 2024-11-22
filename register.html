@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Registrasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-600 p-4 text-white text-center">
+        <h1 class="text-2xl">Registrasi Akun Baru</h1>
+    </header>
+    
+    <main class="p-4">
+        <form id="registerForm" onsubmit="return registerUser ()">
+            <div>
+                <label for="newUsername" class="block">Username:</label>
+                <input type="text" id="newUsername" class="border p-2 w-full" required>
+            </div>
+            <div>
+                <label for="newPassword" class="block">Password:</label>
+                <input type="password" id="newPassword" class="border p-2 w-full" required>
+            </div>
+            <div>
+                <label for="confirmPassword" class="block">Konfirmasi Password:</label>
+                <input type="password" id="confirmPassword" class="border p-2 w-full" required>
+            </div>
+            <button type="submit" class="bg-blue-600 text-white p-2 mt-4">Daftar</button>
+        </form>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4">
+        @Copyright by 22552011209_muhammad lutfi_TIF RP 22 CNS
+    </footer>
+
+    <script>
+        function registerUser () {
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validasi kesamaan password
+            if (password !== confirmPassword) {
+                alert('Password dan konfirmasi password tidak cocok.');
+                return false; // Mencegah pengiriman form
+            }
+
+            // Simpan username dan password di localStorage
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+            alert('Registrasi berhasil! Silakan login.');
+
+            // Arahkan ke halaman login
+            window.location.href = 'login.html'; // Ganti dengan nama file login yang sesuai
+            return false; // Mencegah pengiriman form
+        }
+    </script>
+</body>
+</html>
